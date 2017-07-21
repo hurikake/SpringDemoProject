@@ -17,7 +17,6 @@ public class EmployeeDaoTest {
         TransactionManager tm = DomaConfig.singleton().getTransactionManager();
         tm.required(() -> {
             Employee employee = dao.selectById(1);
-
         });
     }
 
