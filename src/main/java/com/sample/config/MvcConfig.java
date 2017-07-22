@@ -22,7 +22,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"com.sample.controller","com.sample.config"})
+@ComponentScan(basePackages = {"com.sample.controller"})
 public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware{
 
     private ApplicationContext applicationContext;
@@ -32,10 +32,10 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     }
 
 
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-//    }
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    }
 
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
