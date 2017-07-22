@@ -18,6 +18,8 @@ public class EmployeeDaoTest {
         tm.required(() -> {
             Employee employee = dao.selectById(1);
         });
+
+        System.out.println("");
     }
 
 }

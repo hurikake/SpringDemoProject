@@ -7,6 +7,7 @@ import org.seasar.doma.jdbc.dialect.PostgresDialect;
 import org.seasar.doma.jdbc.tx.LocalTransactionDataSource;
 import org.seasar.doma.jdbc.tx.LocalTransactionManager;
 import org.seasar.doma.jdbc.tx.TransactionManager;
+import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
@@ -21,10 +22,18 @@ public class DomaConfig implements Config {
 
     private final TransactionManager transactionManager;
 
+    static {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private DomaConfig(){
         dialect = new PostgresDialect();
         dataSource = new LocalTransactionDataSource(
-                "jdbc:postgresql://localhost:5432/sampleDatabase","postgres","postgres"
+                "jdbc:postgresql://localhost:5432/local_test","postgres","postgres"
         );
         transactionManager = new LocalTransactionManager(
                 dataSource.getLocalTransaction(getJdbcLogger())

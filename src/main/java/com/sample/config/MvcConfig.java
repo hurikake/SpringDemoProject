@@ -22,7 +22,7 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"com.sample.controller"})
+@ComponentScan(basePackages = {"com.sample.controller","com.sample.config"})
 public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware{
 
     private ApplicationContext applicationContext;
