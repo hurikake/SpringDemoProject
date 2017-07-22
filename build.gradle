@@ -25,6 +25,7 @@ dependencies {
             'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.2.2',
             'org.seasar.doma:doma:2.16.1',
             'org.postgresql:postgresql:42.1.3',
+            'org.hibernate:hibernate-validator:5.4.1.Final',
             'org.slf4j:slf4j-api:1.7.16',
             'org.slf4j:slf4j-simple:1.7.16'
     )
