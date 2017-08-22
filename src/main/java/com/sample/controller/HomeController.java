@@ -13,8 +13,8 @@ import java.util.List;
 public class HomeController {
 
     @GetMapping(path = "/")
-    public String home(){
-        return "home";
+    public String index(){
+        return "index";
     }
 
 }

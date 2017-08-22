@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SpringGradleDemo</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="resources/css/common.css">
+    <link rel="stylesheet" href="resources/css/fileupload.css">
+</head>
+<body>
+<nav class="menu-container">
+    <div class="nav-menu">
+        <ul id="menu-main" class="list-unstyled list-inline">
+            <li class="nav-logo"><a href="#">Mock-Logo</a></li>
+            <li><a href="#">Menu1</a></li>
+            <li><a href="#">Menu2</a></li>
+            <li><a href="#">Menu3</a></li>
+        </ul>
+    </div>
+</nav>
+<main class="main">
+    <div class="container">
+        <div class="inner">
+            <div class="contents">
+                <div>
+                    <h3 class="content-title">Item1</h3>
+
+                    <div class="col-xs-4">
+                        <p>Image View</p>
+                        <div id="image-viewer"></div>
+                    </div>
+                    <div class="col-xs-6">
+                        <p>Textです</p>
+                        <!--タブのボタン部分-->
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a href="#tab1" class="nav-link bg-primary" data-toggle="tab">タブ1</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#tab2" class="nav-link bg-primary" data-toggle="tab">タブ2</a>
+                            </li>
+                        </ul>
+                        <!--タブのコンテンツ部分-->
+                        <div class="tab-content">
+                            <div id="tab1" class="tab-pane active">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Test1</li>
+                                    <li class="list-group-item">Test1</li>
+                                </ul>
+                            </div>
+                            <div id="tab2" class="tab-pane">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Test2</li>
+                                    <li class="list-group-item">Test2</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="float: left" class="input-group">
+                        <input type="text" placeholder="Please Choice Image" class="input-path form-control"
+                               readonly="">
+                        <label class="input-group-btn">
+                            <span class="btn btn-primary">
+                                Choose File<input type="file" accept=".jpg,.gif,.png" style="display:none">
+                            </span>
+                            <button class="btn btn-default">Submit</button>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!--<div class="api-contents">-->
+            <!--<h3>MockItems</h3>-->
+            <!--<ul class="list-unstyled list-inline center-block">-->
+            <!--<li>-->
+            <!--<a href="#">-->
+            <!--<div>TestText</div>-->
+            <!--<div>TestText</div>-->
+            <!--<div>TestText</div>-->
+            <!--<div>TestText</div>-->
+            <!--<div>TestText</div>-->
+            <!--<div>TestText</div>-->
+            <!--<div>TestText</div>-->
+            <!--<div>TestText</div>-->
+            <!--<div>TestText</div>-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li>Content2</li>-->
+            <!--<li>Content3</li>-->
+            <!--</ul>-->
+            <!--</div>-->
+        </div>
+    </div>
+
+</main>
+
+</form>
+<script src="resources/js/fileuploader.js"></script>
+</body>
+</html>
