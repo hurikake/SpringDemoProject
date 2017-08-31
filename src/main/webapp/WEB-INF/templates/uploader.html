@@ -73,7 +73,7 @@
                             <span class="btn btn-primary">
                                 Choose File<input type="file" accept=".jpg,.gif,.png" style="display:none">
                             </span>
-                            <button class="btn btn-default">Submit</button>
+                            <button id="upload-btn" class="btn btn-default">Submit</button>
                         </label>
                     </div>
                 </div>
@@ -106,5 +106,26 @@
 
 </form>
 <script src="resources/js/fileuploader.js"></script>
+<script>
+    $( function() {
+        $( '#upload-btn' ) .click(
+            function() {
+                var hostUrl= 'http://localhost:8080/uploader/upload';
+                var param1 = 100;
+                var param2 = 200;
+                $.ajax({
+                    url: hostUrl,
+                    type:'POST',
+                    dataType: 'json',
+                    data : {parameter1 : param1, parameter2 : param2 },
+                    timeout:10000,
+                }).done(function(data) {
+                    alert("ok");
+                }).fail(function(data,XMLHttpRequest, textStatus, errorThrown) {
+                    alert("error");
+                })
+            });
+    } );
+</script>
 </body>
 </html>
