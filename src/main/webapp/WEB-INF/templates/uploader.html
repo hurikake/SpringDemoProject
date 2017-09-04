@@ -71,7 +71,8 @@
                                readonly="">
                         <label class="input-group-btn">
                             <span class="btn btn-primary">
-                                Choose File<input type="file" accept=".jpg,.gif,.png" style="display:none">
+                                Choose File<input name="upload_file" type="file" accept=".jpg,.gif,.png"
+                                                  style="display:none">
                             </span>
                             <button id="upload-btn" class="btn btn-default">Submit</button>
                         </label>
@@ -107,25 +108,33 @@
 </form>
 <script src="resources/js/fileuploader.js"></script>
 <script>
-    $( function() {
-        $( '#upload-btn' ) .click(
-            function() {
-                var hostUrl= 'http://localhost:8080/uploader/upload';
-                var param1 = 100;
-                var param2 = 200;
+    $(function () {
+        $('#upload-btn').click(
+            function () {
+                var $imageInput = $("input[name='upload_file']");
+                if ($imageInput.val() === '') {
+                    return;
+                }
+
+                var formData = new FormData();
+                formData.append("file", $imageInput.prop("files")[0]);
+
+                var hostUrl = 'http://localhost:8080/uploader/upload';
                 $.ajax({
                     url: hostUrl,
-                    type:'POST',
+                    type: 'POST',
                     dataType: 'json',
-                    data : {parameter1 : param1, parameter2 : param2 },
-                    timeout:10000,
-                }).done(function(data) {
+                    data: formData,
+                    timeout: 10000,
+                    processData: false,
+                    contentType: false
+                }).done(function (data) {
                     alert("ok");
-                }).fail(function(data,XMLHttpRequest, textStatus, errorThrown) {
+                }).fail(function (data, XMLHttpRequest, textStatus, errorThrown) {
                     alert("error");
                 })
             });
-    } );
+    });
 </script>
 </body>
 </html>
