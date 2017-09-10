@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>SpringGradleDemo</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -65,18 +66,22 @@
                             </div>
                         </div>
                     </div>
-
-                    <div style="float: left" class="input-group">
-                        <input type="text" placeholder="Please Choice Image" class="input-path form-control"
-                               readonly="">
-                        <label class="input-group-btn">
-                            <span class="btn btn-primary">
-                                Choose File<input name="upload_file" type="file" accept=".jpg,.gif,.png"
-                                                  style="display:none">
-                            </span>
-                            <button id="upload-btn" class="btn btn-default">Submit</button>
-                        </label>
-                    </div>
+                    <form name="sample_form" action="#" enctype="multipart/form-data" th:action="@{/uploader/upload}" th:object="${sampleForm}">
+                        <div style="float: left" class="input-group">
+                            <input type="text" placeholder="Please Choice Image" class="input-path form-control"
+                                   readonly="">
+                            <label class="input-group-btn">
+                                <span class="btn btn-primary">
+                                    Choose File
+                                    <input name="upload_file" type="file"
+                                           th:field="*{multipartFile}"
+                                           accept=".jpg,.gif,.png"
+                                                      style="display:none">
+                                </span>
+                                <button id="upload-btn" class="btn btn-default" type="button">Submit</button>
+                            </label>
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -112,6 +117,9 @@
         $('#upload-btn').click(
             function () {
                 var $imageInput = $("input[name='upload_file']");
+                var $formData = $("form[name='sample_form']");
+                var formDataArgs = $formData.serialize()
+
                 if ($imageInput.val() === '') {
                     return;
                 }
@@ -124,8 +132,8 @@
                     url: hostUrl,
                     type: 'POST',
                     dataType: 'json',
-                    data: formData,
-                    timeout: 10000,
+                    data: formDataArgs,
+                    timeout: 100000,
                     processData: false,
                     contentType: false
                 }).done(function (data) {
