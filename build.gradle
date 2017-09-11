@@ -21,6 +21,8 @@ dependencies {
             'org.springframework:spring-webmvc:4.3.9.RELEASE',
             'org.springframework:spring-tx:4.3.9.RELEASE',
             'org.springframework:spring-jdbc:4.3.9.RELEASE',
+            'org.springframework.security:spring-security-web:4.2.3.RELEASE',
+            'org.springframework.security:spring-security-config:4.2.3.RELEASE',
             'org.thymeleaf:thymeleaf-spring4:3.0.6.RELEASE',
             'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.2.2',
             'org.seasar.doma:doma:2.16.1',
