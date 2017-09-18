@@ -73,10 +73,13 @@
                             <label class="input-group-btn">
                                 <span class="btn btn-primary">
                                     Choose File
-                                    <input name="upload_file" type="file"
+                                    <input name="multipartFile" type="file"
                                            th:field="*{multipartFile}"
                                            accept=".jpg,.gif,.png"
                                                       style="display:none">
+                                    <!--<input type="hidden"-->
+                                           <!--th:name="${_csrf.parameterName}"-->
+                                           <!--th:value="${_csrf.token}"/>-->
 
                                 </span>
                                 <button id="upload-btn" class="btn btn-default" type="button">Submit</button>
@@ -117,17 +120,13 @@
     $(function () {
         $('#upload-btn').click(
             function () {
-                var $imageInput = $("input[name='upload_file']");
-                var $formData = $("form[name='sample_form']");
-                var formDataArgs = $formData.serialize()
 
+                var $imageInput = $("input[name='upload_file']");
                 if ($imageInput.val() === '') {
                     return;
                 }
-
-                var formData = new FormData();
-                formData.append("file", $imageInput.prop("files")[0]);
-
+                var $formData = $("form[name='sample_form']");
+                var formDataArgs = new FormData($formData[0]);
                 var hostUrl = 'http://localhost:8080/uploader/upload';
                 $.ajax({
                     url: hostUrl,
@@ -140,7 +139,7 @@
                 }).done(function (data) {
                     alert("ok");
                 }).fail(function (data, XMLHttpRequest, textStatus, errorThrown) {
-                    alert("error");
+                    alert("errorDESU");
                 })
             });
     });
