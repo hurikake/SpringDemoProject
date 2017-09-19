@@ -12,14 +12,17 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.dialect.IDialect;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @EnableWebMvc
 @Configuration
@@ -56,6 +59,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         SpringTemplateEngine engine = new SpringTemplateEngine();
         engine.setEnableSpringELCompiler(true);
         engine.setTemplateResolver(templateResolver());
+        engine.setAdditionalDialects(springSecurityDialects());
         return engine;
     }
 
@@ -66,6 +70,13 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
         // TODO 実際に使用する際には要件毎にMAX Upload sizeを定義
 //        resolver.setMaxUploadSize(268435456);
         return resolver;
+    }
+
+    @Bean
+    public Set<IDialect> springSecurityDialects() {
+        Set<IDialect> dialects = new LinkedHashSet<>();
+        dialects.add(new SpringSecurityDialect());
+        return dialects;
     }
 
     private ITemplateResolver templateResolver(){

@@ -2,6 +2,8 @@ package com.sample.controller;
 
 import com.sample.form.SampleForm;
 import com.sample.model.FileInfoModel;
+import com.sample.property.ApplicationPropertyBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,7 @@ public class UploaderController {
     }
 
     @RequestMapping(path = "/uploader/upload")
-    public ResponseEntity<String> upload( @ModelAttribute SampleForm sampleForm){
+    public ResponseEntity<String> upload(@ModelAttribute SampleForm sampleForm){
         FileInfoModel fileInfoModel = new FileInfoModel();
         HttpHeaders headers = new HttpHeaders();
 
