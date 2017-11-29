@@ -6,5 +6,5 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan("com.sample.dao")
 public class DaoConfig {
-    //
+    // これはUTFで保存しました
 }
